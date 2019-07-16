@@ -1,0 +1,1 @@
+export { BaseFakeRepo } from './BaseFakeRepo';
