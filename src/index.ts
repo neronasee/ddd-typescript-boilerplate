@@ -1,21 +1,17 @@
 import 'reflect-metadata';
 import { Container } from 'inversify';
-import { InversifyExpressServer } from 'inversify-express-utils';
-import { applicationDependencies, thirdPartyDependencies } from './ioc/inversify.config';
-import bodyParser from 'body-parser';
+import { applicationDependencies } from './ioc/inversify.config';
+import { Server } from './ioc/interfaces';
+import { TYPES } from './ioc/types';
 
 (async () => {
-    const port = 3000;
     const container = new Container();
-    container.load(thirdPartyDependencies);
     await container.loadAsync(applicationDependencies);
-    const app = new InversifyExpressServer(container);
-    app.setConfig(app => {
-        app.use(bodyParser.json());
-    });
-    const server = app.build();
 
-    server.listen(port, () => {
-        console.log(`Server running at http://127.0.0.1:${port}/`);
-    });
+    const server = container.get(Server);
+    await server.start();
 })();
+
+// TODO: add namings like BodyParserMiddleware
+// TODO: fix imports -> rewrite with importing from the single source of truth
+// TODO: add package json to container for convenient imports

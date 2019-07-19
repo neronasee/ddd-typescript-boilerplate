@@ -1,15 +1,17 @@
-import { UseCase, Result } from '../../core';
-import { User } from '../entities/User';
-import { IUserRepo } from '../repo/UserRepo';
 import { injectable, inject } from 'inversify';
+import { Result } from '../../../ioc/interfaces';
 import { TYPES } from '../../../ioc/types';
+
+import { IUseCase } from '../../core/IUseCase';
+import { User } from '../../../domain/user/entities/User';
+import { IUserRepo } from '../../../domain/user/repo/IUserRepo';
 
 export interface CreateNewUserUseCaseDTO {
     name: string;
 }
 
 @injectable()
-export class CreateNewUserUseCase implements UseCase<CreateNewUserUseCaseDTO, Result<User>> {
+export class CreateNewUserUseCase implements IUseCase<CreateNewUserUseCaseDTO, Result<User>> {
     private userRepo: IUserRepo;
 
     constructor(@inject(TYPES.UserRepository) userRepo: IUserRepo) {

@@ -1,3 +1,3 @@
-export interface BaseRepo<T> {
+export interface IBaseRepo<T> {
     exists(t: T): Promise<boolean>;
 }

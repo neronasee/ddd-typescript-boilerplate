@@ -1,4 +1,4 @@
-import { Result } from '../../../core';
+import { Result } from '../../../../ioc/interfaces';
 import { User } from '../User';
 
 let userOrError: Result<User> | null;

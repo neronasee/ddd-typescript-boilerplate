@@ -1,4 +1,5 @@
-import { AggregateRoot, Entity, Result } from '../../core';
+import { Result } from '../../../lib';
+import { AggregateRoot, Entity } from '../../core';
 
 interface UserProps {
     name: string;

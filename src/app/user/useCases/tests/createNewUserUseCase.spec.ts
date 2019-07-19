@@ -1,7 +1,7 @@
-import { Result } from '../../../core';
-import { CreateNewUserUseCase } from '../createNewUser';
-import { User } from '../../entities/User';
-import { FakeUserRepo } from './fakes';
+import { Result } from '../../../../lib';
+import { CreateNewUserUseCase } from '../CreateNewUserUseCase';
+import { User } from '../../../../domain/user/entities/User';
+import { FakeUserRepo } from './fakes/FakeUserRepo';
 
 let useCase: CreateNewUserUseCase;
 let fakeUserRepo: FakeUserRepo;

@@ -1,4 +1,4 @@
-import { BaseRepo } from './BaseRepo';
+import { BaseRepo } from '../../core/IBaseRepo';
 import { User } from '../entities/User';
 
 export interface IUserRepo extends BaseRepo<User> {

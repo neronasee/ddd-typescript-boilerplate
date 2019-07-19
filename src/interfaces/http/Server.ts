@@ -1,24 +1,24 @@
-// import express from 'express';
+import { inject, injectable } from 'inversify';
+import express, { Express } from 'express';
+import { AppRouter } from './AppRouter';
+// TODO: get from config
+const PORT = 3000;
 
-// class Server {
-//     constructor(router) {
-//         this.config = config;
-//         this.logger = logger;
-//         this.express = express();
+@injectable()
+export class Server {
+    private _serverInstance: Express;
 
-//         this.express.disable('x-powered-by');
-//         this.express.use(router);
-//     }
+    constructor(@inject(AppRouter) router: AppRouter) {
+        this._serverInstance = express();
+        this._serverInstance.use(router.mainRouter);
+    }
 
-//     start() {
-//         return new Promise(resolve => {
-//             const http = this.express.listen(this.config.web.port, () => {
-//                 const { port } = http.address();
-//                 this.logger.info(`[p ${process.pid}] Listening at port ${port}`);
-//                 resolve();
-//             });
-//         });
-//     }
-// }
-
-// module.exports = Server;
+    start() {
+        return new Promise(resolve =>
+            this._serverInstance.listen(PORT, () => {
+                console.log(`Listening on port ${PORT}`);
+                resolve();
+            }),
+        );
+    }
+}
