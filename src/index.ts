@@ -13,3 +13,9 @@ import { getDbConnection } from './infra/database/index';
     const server = container.get(Server);
     await server.start();
 })();
+
+/**
+ * TODO:
+ *
+ * - add logging
+ */
