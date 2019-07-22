@@ -8,7 +8,7 @@ export async function getDbConnection() {
         type: 'postgres',
         host: 'localhost',
         port: 5432,
-        username: 'sashavorona',
+        username: 'postgres',
         password: 'secret',
         database: 'demo',
         entities: [UserDbEntity],
