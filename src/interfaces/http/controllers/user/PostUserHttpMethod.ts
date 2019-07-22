@@ -26,10 +26,6 @@ export class PostUserHttpMethod implements IControllerHttpMethod {
 
             res.send(result.getValue());
         } catch (error) {
-            // TODO: add logging
-            console.log('error');
-            console.log(error);
-
             res.status(500);
             res.send(error.message);
         }

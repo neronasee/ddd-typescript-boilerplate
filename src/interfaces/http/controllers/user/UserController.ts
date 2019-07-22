@@ -1,6 +1,6 @@
 import { multiInject, injectable } from 'inversify';
-import { TYPES } from '../../../../ioc/types';
 import { Router, IControllerHttpMethod, IHttpController } from '../../../../ioc/interfaces';
+import { TYPES } from '../../../../ioc/types';
 
 @injectable()
 export class UserController implements IHttpController {

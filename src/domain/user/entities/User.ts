@@ -1,4 +1,4 @@
-import { Result } from '../../../lib';
+import { Result } from '../../../ioc/interfaces';
 import { AggregateRoot, Entity } from '../../core';
 
 interface UserProps {

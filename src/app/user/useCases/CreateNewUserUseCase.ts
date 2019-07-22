@@ -1,10 +1,9 @@
 import { injectable, inject } from 'inversify';
-import { Result } from '../../../ioc/interfaces';
+import { Result, IUserRepo } from '../../../ioc/interfaces';
 import { TYPES } from '../../../ioc/types';
 
 import { IUseCase } from '../../core/IUseCase';
 import { User } from '../../../domain/user/entities/User';
-import { IUserRepo } from '../../../domain/user/repo/IUserRepo';
 
 export interface CreateNewUserUseCaseDTO {
     name: string;
@@ -12,10 +11,10 @@ export interface CreateNewUserUseCaseDTO {
 
 @injectable()
 export class CreateNewUserUseCase implements IUseCase<CreateNewUserUseCaseDTO, Result<User>> {
-    private userRepo: IUserRepo;
+    private _userRepo: IUserRepo;
 
     constructor(@inject(TYPES.UserRepository) userRepo: IUserRepo) {
-        this.userRepo = userRepo;
+        this._userRepo = userRepo;
     }
 
     public async execute(request: CreateNewUserUseCaseDTO): Promise<Result<User>> {
@@ -29,7 +28,7 @@ export class CreateNewUserUseCase implements IUseCase<CreateNewUserUseCaseDTO, R
 
         const user = userOrError.getValue();
 
-        await this.userRepo.add(user);
+        await this._userRepo.add(user);
 
         return Result.ok<User>(user);
     }

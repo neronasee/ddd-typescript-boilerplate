@@ -1,7 +1,3 @@
-// /** core */
-// export { IUseCase } from '../app/core/IUseCase';
-// export { IBaseRepo } from '../domain/core/IBaseRepo';
-
 /** middlewares */
 export { IMiddleware } from '../interfaces/http/middlewares/interfaces/IMiddleware';
 
@@ -17,6 +13,7 @@ export { CreateNewUserUseCase, CreateNewUserUseCaseDTO } from '../app/user/useCa
 /** respositories */
 export { IUserRepo } from '../domain/user/repo/IUserRepo';
 
+export { Config } from '../config';
 export { AppRouter } from '../interfaces/http/AppRouter';
 export { Server } from '../interfaces/http/Server';
 

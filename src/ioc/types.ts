@@ -1,5 +1,4 @@
 export const TYPES = {
-    // TODO: no needed types
     AppRouter: Symbol('AppRouter'),
     Server: Symbol('Server'),
 

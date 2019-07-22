@@ -1,4 +1,4 @@
-import { Result } from '../../../../lib';
+import { Result } from '../../../../ioc/interfaces';
 import { CreateNewUserUseCase } from '../CreateNewUserUseCase';
 import { User } from '../../../../domain/user/entities/User';
 import { FakeUserRepo } from './fakes/FakeUserRepo';

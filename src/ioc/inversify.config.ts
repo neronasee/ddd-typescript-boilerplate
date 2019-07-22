@@ -1,6 +1,14 @@
-import { AsyncContainerModule } from 'inversify';
+import { ContainerModule } from 'inversify';
 import { TYPES } from './types';
-import { IHttpController, IControllerHttpMethod, IUserRepo, IMiddleware, Server, AppRouter } from './interfaces';
+import {
+    IHttpController,
+    IControllerHttpMethod,
+    IUserRepo,
+    IMiddleware,
+    Server,
+    AppRouter,
+    Config,
+} from './interfaces';
 
 import { CreateNewUserUseCase } from '../app/user/useCases/CreateNewUserUseCase';
 
@@ -8,16 +16,10 @@ import { BodyParserMiddleware } from '../interfaces/http/middlewares';
 import { PostUserHttpMethod } from '../interfaces/http/controllers/user/PostUserHttpMethod';
 import { UserController } from '../interfaces/http/controllers/user/UserController';
 
-import { getDbConnection } from '../infra/database';
 import { getUserRepository } from '../infra/database/repositories';
 
-// import { Server } from '../interfaces/http/Server';
-// import { AppRouter } from '../interfaces/http/AppRouter';
-
-export const applicationDependencies = new AsyncContainerModule(async bind => {
-    // TODO: move it out from here
-    await getDbConnection();
-
+export const applicationDependencies = new ContainerModule(bind => {
+    bind<Config>(Config).toSelf();
     bind<AppRouter>(AppRouter).toSelf();
     bind<Server>(Server).toSelf();
 

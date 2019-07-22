@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { multiInject, injectable } from 'inversify';
-import { TYPES } from '../../ioc/types';
 import { IHttpController, IMiddleware } from '../../ioc/interfaces';
+import { TYPES } from '../../ioc/types';
 
 @injectable()
 export class AppRouter {

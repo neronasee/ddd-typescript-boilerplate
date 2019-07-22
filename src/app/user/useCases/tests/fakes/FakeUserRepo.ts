@@ -1,6 +1,6 @@
 import { BaseFakeRepo } from '../testHelpers';
 import { User } from '../../../../../domain/user/entities/User';
-import { IUserRepo } from '../../../../../domain/user/repo/IUserRepo';
+import { IUserRepo } from '../../../../../ioc/interfaces';
 
 export class FakeUserRepo extends BaseFakeRepo<User> implements IUserRepo {
     protected compareFakeItems(a: User, b: User): boolean {
